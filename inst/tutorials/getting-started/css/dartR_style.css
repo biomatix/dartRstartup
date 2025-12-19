@@ -83,7 +83,7 @@ ul {
 }
 
 li::marker {
-  color: #cc9900; 
+  color: #cc9900;
   font-weight: bold;
 }
 
@@ -242,7 +242,7 @@ pre.sourceCode {
 
 pre:not([class]) {
     background-color: white;
-    border: 1px solid rgba(66, 116, 121, 0.1);
+    border: 1px solid #D3D3D3;
     font-size: 12px;
 }
 
@@ -367,7 +367,7 @@ a:hover, a:focus {
 
 .menuButton:hover {
   background-color: #dbd1e0;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 
@@ -540,11 +540,11 @@ a:hover, a:focus {
           background-color: #f2f3e9; /* Light purple background */
           color: #333333; /* Darker text for readability */
           border-left: 5px solid #86753E;
-          
+
         }
-        
-        
-        
+
+
+
 .infobox {
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;

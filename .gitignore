@@ -48,3 +48,8 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 .Rproj.user
+
+# extra files for tutorial
+*_files/
+
+*.html

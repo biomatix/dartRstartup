@@ -52,13 +52,13 @@ The first part of this tutorial are the worked examples, where we walk you throu
 
 **List of worked examples:**
 
-- [Worked Ex 2-1: Data Structures]
+- [Worked Ex 2-1: Data Structures] *optpional*
 
-- [Worked Ex 2-2: I/O]
+- [Worked Ex 2-2: I/O] *optpional*
 
-- [Worked Ex 2-3: Controlling Workflow]
+- [Worked Ex 2-3: Controlling Workflow] *optpional*
 
-- [Worked Ex 2-4:Functions]
+- [Worked Ex 2-4:Functions] *optpional*
 
 - [Worked Ex 3-1: Data Structures and I/O]
 
@@ -74,11 +74,34 @@ The first part of this tutorial are the worked examples, where we walk you throu
 
 - [Worked Example Exercises]
 
-- [Integrative Exercises]
+- [Exercise 7-1: Camaroon Macrobrachium]
+
+- [Exercise 7-2: Western Sawshell Turtle]
+
+- [Exercise 7-3: Northern Quoll]
+
+
 
 Don't forget that all aspects of the material are beneficial for learning. The ebook for being introduced to the theory and methods, the worked examples to gain experience in the application, and finally the exercises to apply everything you have learned.
 
 <small>If you can't see the left sidebar, you just need to make the tutorial panel wider.</small>
+
+### R code box
+
+Throughout this tutorial there will be interactive R scripts/consoles (like the one below). This is like a mini version of R running within this tutorial. But since we are already in R, you can also follow along in your own console and start writing your own code in the source panel. You could even try testing some of what you learn on your own data.
+
+But first, try running the code below (press the button that says *run code*)
+
+```{r ex, exercise=TRUE}
+# Press the Run Code button to run this code
+1+1
+```
+
+It is worth noting that each R code box is independent, so code you ran in one will not be recognised by another. Don't worry though, we have done some fancy coding in the background for you to continue along, keeping track of the tasks performed before hand when necessary. 
+
+Some of the exercises within this tutorial are specific to your working environment or Rstudio, these types of exercises will have the code provided for you to run in your R session, along with the output.
+
+While going through the worked examples your progress will be saved, if at any point you would like to refresh the tutorial and start over, the <small>[Start Over]{style="color:#a3a3a3; font-family:'Jaldi', sans-serif;"}</small> button is located at the bottom of the left sidebar, below the tutorial content.
 
 ### Google group
 
@@ -1082,6 +1105,8 @@ gl <- tympo.gl
 gl
 ```
 
+###
+
 This tells us the size of the genlight object, the number of genotypes (individuals) and the number of SNPs (loci). It identifies important "slots" such as `@pop`, `@other$loc.metrics` which contains the locus metrics like AlleleID, AvgPIC, RepAvg etc, and `@other$ind.metrics` which contains the individual metrics like id, pop, sex, age etc. Note also that the ind.metrics contains the service and plate location of the individual sample.
 
 All useful stuff for later analyses.
@@ -1094,6 +1119,7 @@ nInd(gl)
 nLoc(gl)
 nPop(gl)
 ```
+###
 
 and you can check the population and individual names
 
@@ -1122,8 +1148,9 @@ Try this on some other individual metrics.
 ```
 
 ```{r 31e2-hint}
-# you could try any of the metrics found in ind.metrics. What about age:
-gl@other$ind.metrics$age[1:12] # first twelve dragons' ages.
+# you could try any of the metrics
+# found in ind.metrics. What about age:
+gl@other$ind.metrics$age[1:12]
 ```
 
 
@@ -1530,7 +1557,7 @@ gl2 <- gl.subsample.ind(gl, n=50, by.pop = FALSE, replace=FALSE)
 To subsample individuals within populations, use the `by.pop` parameter set to `TRUE`.
 
 ```{r 42o, exercise = TRUE, exercise.setup = "datagl"}
-gl2 <- gl.subsample.ind(gl, n=2, by.pop=TRUE, replace=FALSE)
+gl2 <- gl.subsample.ind(gl, n=5, by.pop=TRUE, replace=FALSE)
 ```
 
 Setting the replacement parameter to `TRUE` will subsample with replacement, so an individual could conceivably be included twice in the new dataset.
@@ -1578,7 +1605,8 @@ Below we step through the analysis with you. Please copy the code, paste it or t
 
 ### Load the Dataset
 
-First, load in the dataset using
+First, load in the dataset using or refer to [Worked Ex 3-1: Data Structures and I/O].
+
 ```{r eval = FALSE}
 gl <- gl.load("Tympo_SNP_raw.RData")
 ```
@@ -1589,9 +1617,7 @@ gl <- gl.load("./www/Tympo_SNP_raw.RData")
 ```
 
 
-
 Quickly examine the contents of your genlight object. 
-
 
 ```{r}
 nInd(gl)
@@ -1804,7 +1830,6 @@ Run a report first to inform the choice of threshold. Note that this is computat
 gl.report.hamming(gl)
 ```
 
-
 The report suggests that an appropriate threshold for the Hamming Distance might be 0.3, so lets run with that.
 
 ```{r}
@@ -1835,7 +1860,7 @@ gl <- gl.load("./www/Tympo_SNP_raw.RData")
 Have a look at the quality of the raw data using a smearplot – loci across the X axis, individuals up the Y axis.
 
 
-```{r 51z, exercise = TRUE, exercise.setup = "datagl"}
+```{r 51a, exercise = TRUE, exercise.setup = "datagl"}
 gl.smearplot(gl)
 ```
 
@@ -1843,7 +1868,7 @@ Not particularly high quality, as you would expect of the raw data. Lots of miss
 
 Let us apply a filtering regime.
 
-```{r 51y, exercise = TRUE, exercise.setup = "datagl"}
+```{r echo = FALSE, results='hide'}
 # gl <- gl.filter.sexlinked(gl,"xy") # Loss of 48 loci
 gl <- gl.drop.sexlinked(gl, 'xy')
 gl <- gl.filter.callrate(gl, threshold=0.95) # Loss of 3522 loci
@@ -1852,32 +1877,30 @@ gl <- gl.filter.reproducibility(gl, threshold=0.995) # Loss of 802 loci
 gl <- gl.filter.rdepth(gl,lower=8) # Loss of 24 loci
 ```
 
-
-
-```{r, echo = FALSE}
-
-gl <- tympo.gl
+```{r 51b, exercise = TRUE, exercise.setup = "datagl"}
 # gl <- gl.filter.sexlinked(gl,"xy") # Loss of 48 loci
-#gl <- gl.drop.sexlinked(gl, 'xy')
+gl <- gl.drop.sexlinked(gl, 'xy')
 gl <- gl.filter.callrate(gl, threshold=0.95) # Loss of 3522 loci
 gl <- gl.filter.callrate(gl, threshold=0.7, method='ind', mono.rm=TRUE) # Loss of 1 individual, 84 loci
 gl <- gl.filter.reproducibility(gl, threshold=0.995) # Loss of 802 loci
-gl <- gl.filter.rdepth(gl,lower=8) #
+gl <- gl.filter.rdepth(gl,lower=8) # Loss of 24 loci
+```
 
-#pca <- gl.pcoa(gl)
-
+```{r glfiltpca}
+gl <- tympo.gl.filtered
+pca <- tympo.pca
 ```
 
 We will not show the output here, but you should check the progressive loss of loci as you work through the above statements in RStudio.
 Quick check of the outcome.
 
-```{r 51x, exercise = TRUE, exercise.setup = "glfiltpca"}
+```{r 51c, exercise = TRUE, exercise.setup = "glfiltpca"}
 gl.smearplot(gl)
 ```
 
 The smear plot is much better. The number of missing values do not dominate the visual, and no individuals stand out as outliers in pattern. our filtering has worked.
 
-```{r 51w, exercise = TRUE, exercise.setup = "glfiltpca"}
+```{r 51d, exercise = TRUE, exercise.setup = "glfiltpca"}
 nLoc(gl)
 nInd(gl)
 table(pop(gl))
@@ -1923,9 +1946,7 @@ First, load in the dataset using
 gl <- gl.load("Tympo_SNP_filtered.RData")
 ```
 
-```{r glfiltpca}
-gl <- tympo.gl
-```
+
 
 Quickly examine the contents of your genlight object. 
 
@@ -1966,7 +1987,7 @@ pc.plot <- gl.pcoa.plot(pca, gl)
 
 The plot shows nice separation of the geographic locations, which indicates that the individuals from each physical location have distinct allelic frequency profiles. Tuggeranong stands out as distinctive, to the point that if you had an unknown individual from that locality, it could be assigned to Tuggeranong by its allelic profile across the 1077 loci.
 
-Kowen is also quite distinct, but the allelic profiles individuals from the other two localities abut. There appears to be evidence of some migration between Googong and Royalla as indicated by individuals in each with allelic profiles characteristic of the other. Similarly, some Royalla individuals appear to have migrated to Kowen and one in the other direction. The unknown (purple) individual is best assigned to Royalla.
+Kowen is also quite distinct, but the allelic profiles individuals from the other two localities abut. There appears to be evidence of some migration between Googong and Royalla as indicated by individuals in each with allelic profiles characteristic of the other. Similarly, some Royalla individuals appear to have migrated to Kowen and one in the other direction. The unknown (purple) individuals are best assigned to Royalla.
 
 We hope that you can see the power of this exploratory visual technique.
 If you want to identify the migrants, you can use the parameter interactive=TRUE and mouse-over the points to obtain their identities.
@@ -2006,7 +2027,7 @@ And that brings us to the end of the Worked Examples for this eBook on Getting S
 ## Worked Example Exercises
 
 ### EXERCISES (click to expand)
-Chapter 3 Exercises
+##### Chapter 3 Exercises
 
 <details>
 
@@ -2034,6 +2055,7 @@ Chapter 3 Exercises
 
 -	Use the `as.matrix()` function to display the genotypes for the first 5 individuals and the first 10 loci.
 
+<br>
 </details>
 
 <details>
@@ -2062,23 +2084,70 @@ Chapter 3 Exercises
 
 -	Use the `as.matrix()` function to display the genotypes for the first 5 individuals and the first 10 loci.
 
+<br>
 </details>
 
-<br>
 
-Chapter 4 Exercises
+##### Chapter 4 Exercises
 
 <details>
 
 <summary><b>[Exercise 4-1: SNP Data QC</b>]{style="color:black; cursor:pointer"}</summary>
 
-</details>
+-	Load [Exercise_4-1.Rdata]{style="color:blue;"} to genlight object `gl`.
 
+-	How many loci are represented in this dataset?
+
+-	How many individuals have been scored?
+
+-	Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
+
+-	Examine the genotypes for the first 5 individuals for the first 10 loci.
+
+-	How are missing values represented?
+
+-	Run a series of reports to assess the quality of the SNP calls. Generate reports for reproducibility, rdepth, secondaries, overshoot, taglength, monomorphs and other locus metadata in gl.
+
+-	Examine the structure of the dataset in a smear plot. What can you say about allelic dropout?
+
+-	Redo activities 2-7 with your own data.
+
+<br>
+</details>
 
 
 <details>
 
 <summary><b>[Exercise 4-2: SilicoDArT Data QC</b>]{style="color:black; cursor:pointer"}</summary>
+
+-	Try this for yourself using a sample SilicoDart dataset. 
+
+-	First load the genlight object [Exercise_4-2.Rdata]{style="color:blue;"} to a working genlight object `gs`.
+
+-	How many loci are represented in this dataset?
+
+-	How many individuals have been scored?
+
+-	Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
+
+-	Examine the genotypes for the first 5 individuals for the first 10 loci.
+
+-	How are missing values represented?
+
+-	Examine the extent of failed calls within the dataset.
+
+```{r eval = FALSE}
+gl.report.callrate(gs)
+gl.report.callrate(gs, method='ind')
+gl.smearplot(gs)
+```
+
+
+-	If you have a silicoDArT dataset of your own, try what you have learned on that dataset.
+
+-	All of the report functions operate in a similar manner with SilicoDArT data, though not an identical manner.
+
+<br>
 
 </details>
 
@@ -2088,60 +2157,93 @@ Chapter 4 Exercises
 
 <summary><b>[Exercise 4-3: Using Recode Tables</b>]{style="color:black; cursor:pointer"}</summary>
 
+-	Copying `testset.gl` to a working object `gl`. List the populations and the number of populations.
 
-</details>
+-	Use `gl.make.recode.pop()` to create a draft recode table with a specified name (make sure it is a .csv file). Edit this in excel to make changes to the population assignments. Make one population assignment Delete.
+
+-	Apply the recode table to genlight object `gl`.
+
+-	List the populations and the number of populations. Have the anticipated changes been made?
+
+-	Now try editing the population assignments with `gl.edit.recode.pop()`. List the populations and the number of populations. Have the anticipated changes been made?
+
+-	If you deleted a population, be sure to filter out monomorphic loci and to recalculate the locus metadata.
 
 <br>
 
-Chapter 5 Exercises
+</details>
+
+
+##### Chapter 5 Exercises
 
 <details>
 
 <summary><b>[Exercise 5-1: Filtering SNP Data</b>]{style="color:black; cursor:pointer"}</summary>
 
+-	Examine the attributes of the dataset `platypus.gl` paying particular attention to the presence of monomorphic loci and loci or individuals with all NA scores.
+
+-	Use the gl.report functions in combination with the gl.filter functions to devise and execute a series of filtering steps to yield a reliable set of SNP markers.
+
+-	How many SNP markers did you start with, and how many did you end up with? 
+
+-	Which filtering steps generate monomorphic markers, and how does this influence when you filter for monomorphic markers?
+
+-	Check the number of individuals remaining in each of the populations defined for the dataset. Has your filtering potentially compromised subsequent analyses by decimating particular populations [maybe do a before-after comparison].
+
+-	Draft a section for a possible materials and methods section of a paper outlining your filtering strategy and its implementation.
+
+
+<br>
 </details>
 
 <details>
 
 <summary><b>[Exercise 5-2: Filtering SilicoDArT Data</b>]{style="color:black; cursor:pointer"}</summary>
 
+-	Repeat the analyses of Exercise 5-1 on the silico dataset [tympo_silico.csv]{style="color:blue;"} 
+
+<br>
 </details>
 
 
-<br>
 
-Chapter 6 Exercises
+##### Chapter 6 Exercises
 
 
 <details>
 
 <summary><b>[Exercise 6-1: Visualizing Structure</b>]{style="color:black; cursor:pointer"}</summary>
 
+- Try running and plotting pcoas on the `platypus.gl` and `testset.gl`. Which dataset has more structure? Can you tell from a PCA?
+
 </details>
 
 <br>
 
-## Integrative Exercises
+## Exercise 7-1: Camaroon Macrobrachium 
 
-### EXERCISES (click to expand)
+Macrobrachium is a large and cosmopolitan crustacean genus of high economic importance worldwide. The authors of this study investigated the morphological and molecular identification of freshwater prawns of the genus Macrobrachium in South, Southwest and Littoral regions of Cameroon in Africa. Seven species occur in the area:  M. vollenhovenii, M. macrobrachion, M. sollaudii, M. dux, M. chevalieri, M. felicinum and an undescribed Macrobrachium species. The objective of the study was to validate (or invalidate) the identified species based on their genetic profiles. A total of 93 individuals representing these species were subjected to genetic characterization using 1,814 DArT markers. This study is considered valuable for informing breeding design and genetic resource conservation programs for Macrobrachium in Africa.
 
-<details>
+Refer to the original paper by Judith Makombu and her team for further detail on the study. 
 
-<summary><b>[Exercise 7-1: Camaroon Macrobrachium</b>]{style="color:black; cursor:pointer"}</summary>
+You are asked to use this dataset to apply what you have learned from this introductory eBook, drawing from across all Chapters of this eBook. Note that the data may have been modified for educational purposes and that you should refer to the original paper and its supplementary files for the definitive data, or contact the authors directly, if you wish to draw upon these data for research purposes.
 
-</details>
+### Set up a new project and associated directory
 
-
-<details>
-
-<summary><b>[Exercise 7-2: Western Sawshell Turtle</b>]{style="color:black; cursor:pointer"}</summary>
-
-</details>
+Set up a new project and directory to house the files generated in this analysis. Set global verbosity to 3.
 
 
-<details>
 
-<summary><b>[Exercise 7-3: Northern Quoll</b>]{style="color:black; cursor:pointer"}</summary>
+*more to come...*
 
-</details>
+
+## Exercise 7-2: Western Sawshell Turtle
+
+*coming soon...*
+
+
+## Exercise 7-3: Northern Quoll
+
+*coming soon...*
+
 
