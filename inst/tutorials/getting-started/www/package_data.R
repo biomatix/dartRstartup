@@ -14,6 +14,7 @@ usethis::use_data(tympo.gl.filtered, overwrite = TRUE)
 tympo.pca <- gl.pcoa(tympo.gl.filtered)
 usethis::use_data(tympo.pca, overwrite = TRUE)
 
-
+turtles.df <- read.table("my_input.dat")
+usethis::use_data(turtles.df, overwrite = TRUE)
 
 setwd(prjdir)

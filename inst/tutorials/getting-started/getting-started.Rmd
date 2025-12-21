@@ -123,14 +123,13 @@ R works with objects, that is, with self-contained entities that have defined at
 When you create an object in R, attributes are assigned to it by default. The decision is made behind the scenes.
 
 
-```{r ex21a, exercise = FALSE, exercise.setup = "data4"}
+```{r ex21a, exercise = TRUE}
 x <- 12
 class(x)
 ```
 
 
-
-```{r ex21b, exercise = FALSE}
+```{r ex21b, exercise = TRUE}
 x <- "pumkin"
 class(x)
 ```
@@ -140,21 +139,21 @@ class(x)
 A Scalar is an object that contains a single value. It could be a number, or a character string, or a logical variable (`TRUE` or `FALSE`).
 
 
-```{r ex21c, exercise = FALSE}
+```{r ex21c, exercise = TRUE}
 # Character scalar
 chr <- "Juvenile"
 chr
 class(chr)
 ```
 
-```{r  ex21d, exercise = FALSE}
+```{r  ex21d, exercise = TRUE}
 # Numeric scalar
 num <- 6
 num
 class(num)
 ```
 
-```{r  ex21e, exercise = FALSE}
+```{r  ex21e, exercise = TRUE}
 # Logical scalar
 log <- TRUE
 log
@@ -165,12 +164,12 @@ class(log)
 
 A vector is an object containing an ordered set of values all of the same type. Vectors are the fundamental building blocks of data in R so we visit vectors in some detail here.
 
-### Creating Vectors
+#### Creating Vectors
 
 Use the `c()` function (which stands for "combine" or "concatenate") to create vectors of class character, numeric, or logical.
 
 
-```{r ex21f, exercise = FALSE}
+```{r ex21f, exercise = TRUE}
 # Character vector (text)
 names <- c("Alice", "Bob", "Carol", "Dave")
 names
@@ -182,48 +181,51 @@ temperatures <- c(72, 68, 75, 71, 69)
 temperatures
 ```
 
-
-```{r ex21h, exercise = FALSE}
+```{r ex21h, exercise = TRUE}
 # Logical vector (TRUE/FALSE)
 test_results <- c(TRUE, FALSE, TRUE, TRUE)
 test_results
 ```
 
+###
+
 On occasion, you may wish to initialize a vector to be populated during later computation. This can be done with
 
-```{r ex21i, exercise = FALSE}
+```{r ex21i, exercise = TRUE}
 # Initializing an empty vector
 vec <- vector("logical", 20) # Creates logical NAs 
 vec[] <- NA # Explicitly set all to NA 
 vec 
 ```
 
+###
+
 Note: In R, even scalar values are vectors
 
-```{r ex21j, exercise = FALSE}
+```{r ex21j, exercise = TRUE}
 single_value <- 42
 is.vector(single_value)
 length(single_value)
 ```
 
+###
 #### Accessing Vector Elements
 
+```{r data2, echo = FALSE}
+width <- c(10.4,5.6,3.1,6.4,21.7)
+names <- c("Alice", "Bob", "Carol", "Dave")
+vec <- c(1, 2, NA, 4, 5)
+sexcode <- c("F", "F", "M", "J", "F", "M", "J", "J", "F")
+mat <- matrix(NA, nrow = 3, ncol = 4) 
+```
 
 
-```{r ex21k, exercise = FALSE}
+```{r}
 # Create a vector
 width <- c(10.4,5.6,3.1,6.4,21.7)
 # Access a single element
 width[4]
-```
 
-```{r echo = FALSE}
-width <- c(10.4,5.6,3.1,6.4,21.7)
-names <- c("Alice", "Bob", "Carol", "Dave")
-```
-
-
-```{r results='markup'}
 # Access multiple specific elements
 width[c(1,3,4)]
 
@@ -237,12 +239,22 @@ width[c(-2,-5)]
 width[c(1,length(width))]
 
 # Access elements greater than 6 
-width[width > 6] 
+width[width > 6]
 
 # Access elements equal to specific values 
 names[names == "Alice"] 
 
 ```
+
+Try accessing different elements using the example code above.
+
+```{r ex21q,  exercise = TRUE, exercise.setup = "data2"}
+width <- c(10.4,5.6,3.1,6.4,21.7)
+width[]
+
+```
+
+###
 
 You should by now have the gist. A vector is a data structure that holds an ordered set of numbers, each of which can be addressed by its position in the ordered set, or by applying some logical condition, using square brackets.
 
@@ -250,7 +262,7 @@ You should by now have the gist. A vector is a data structure that holds an orde
 
 The normal rules of arithmetic apply to vectors in the sense that they apply to each element of the vector (note that it is not at all like vector arithmetic in the mathematical sense).
 
-```{r}
+```{r ex21r,  exercise = TRUE, exercise.setup = "data2"}
 width <- width + 10
 width
 ```
@@ -259,7 +271,7 @@ will add 10 to each value of the vector. Similar actions occur with the other ar
 
 It is possible to include two vectors in calculations, in which case their values will be included in the equation as matched pairs. For example, if we have two vectors with the same number of values, length and width, then the assignment
 
-```{r}
+```{r ex21s,  exercise = TRUE, exercise.setup = "data2"}
 length <-  c(2,1,3,2,10)
 area <- length*width
 area
@@ -274,19 +286,19 @@ Working with vectors of differing sizes is difficult, and we probably should not
 
 Missing values are represented by the special keyword NA.
 
-```{r}
+```{r ex21t,  exercise = TRUE, exercise.setup = "data2"}
 vec <- c(1, 2, NA, 4, 5)
 vec
 ```
 
 
-```{r}
+```{r ex21u,  exercise = TRUE, exercise.setup = "data2"}
 # Check for missing values
 is.na(vec)
 ```
 
 
-```{r}
+```{r ex21v,  exercise = TRUE, exercise.setup = "data2"}
 # Remove missing values
 vec2 <- vec[!is.na(vec)]
 vec2
@@ -295,7 +307,7 @@ vec2
 #### Useful Vector Functions
 
 
-```{r results='markup'}
+```{r eval = FALSE}
 numbers <- c(1, 5, 2, 2, 8, 1, 9, 3)
 length(numbers)    # Number of elements
 
@@ -312,21 +324,35 @@ sort(numbers)      # Sort in ascending order
 unique(numbers)    # Remove duplicates
 ```
 
+Try them in the code box below:
+
+```{r ex21w,  exercise = TRUE, exercise.setup = "data2"}
+numbers <- c(1, 5, 2, 2, 8, 1, 9, 3)
+length(numbers) # e.g.
+
+```
+
+
+```{r ex21w-hint}
+# copy and paste from above, one at a time or all at once.
+```
+
+
 For a more detailed account of working with vectors in R, refer to the [AI summary on vectors](http://georges.biomatix.org/storage/app/media/eBook Introduction to dartR/AI_Guide_to_R_Vectors.htm).
 
 ### Factors
 
 Factors are are special types of vectors whose values have labels associated with them. For example, we might create a character vector containing a combined sex and maturity code for animals caught on a particular day.
 
-```{r}
+```{r ex21aa,  exercise = TRUE, exercise.setup = "data2"}
 sexcode <- c("F", "F", "M", "J", "F", "M", "J", "J", "F")
-	sexcode
+sexcode
 ```
 
 
 Converting this to a factor causes the values, in alphabetical order, to be assigned numbers, and those numbers to be assigned labels. 
 
-```{r}
+```{r ex21bb,  exercise = TRUE, exercise.setup = "data2"}
 sexcode <- factor(sexcode)
 sexcode
 ```
@@ -334,21 +360,21 @@ sexcode
 
 A subtle difference to be sure. The numbers are hidden behind the scenes, and re-caste with their character values by R when they are printed out. That they are stored as numbers is evident when we print the object sexcode out without reference to its class.
 
-```{r}
-unclass(sexcode)
+```{r ex21cc,  exercise = TRUE, exercise.setup = "data2"}
+unclass(factor(sexcode))
 ```
 
 The subtle difference between a character vector and a factor will become evident in analyses that involve discrete factors.
 To convert a character factor to a character vector, use
 
-```{r}
+```{r ex21dd,  exercise = TRUE, exercise.setup = "data2"}
 sexcode <- as.character(sexcode)
 sexcode
 ```
 
 To convert a numeric factor to a numeric vector, use
 
-```{r}
+```{r ex21ee,  exercise = TRUE, exercise.setup = "data2"}
 width <- as.numeric(as.character(width))
 width
 ```
@@ -363,7 +389,7 @@ Creating Matrices
 Matrices are usually created by inputting data from a spreadsheet (refer section on I/O).
 On occasion, you may wish to initialize a matrix to be populated during later computation. This can be done with
 
-```{r}
+```{r ex21ff,  exercise = TRUE, exercise.setup = "data2"}
 # Initializing an empty Matrix
 mat <- matrix(NA, nrow = 3, ncol = 4) 
 mat
@@ -371,7 +397,7 @@ mat
 
 #### Adding row and column names to a matrix
 
-```{r}
+```{r ex21gg,  exercise = TRUE, exercise.setup = "data2"}
 # Add row names 
 rownames(mat) <- c("Row1", "Row2", "Row3") 
 # Add column names 
@@ -385,7 +411,12 @@ mat
 
 As with vectors, square brackets are used to access matrix elements. Note that the indexing begins with 1 (not zero as in many programming languages) and that the first index value refers to rows and the second to columns.
 
-```{r results='markup'}
+```{r data3, echo = FALSE}
+mat <- matrix(1:12, nrow = 3, ncol = 4)
+```
+
+
+```{r eval = FALSE}
 # Create a matrix
 mat <- matrix(1:12, nrow = 3, ncol = 4)
 mat
@@ -402,10 +433,16 @@ mat[,3]
 # Get multiple rows
 mat[c(1,3),]
 
-
 # Get multiple columns
 mat[,c(2,4)]
 
+```
+
+Try accessing different elements using the example code above.
+
+```{r  ex21mm,  exercise = TRUE, exercise.setup = "data3"}
+mat <- matrix(1:12, nrow = 3, ncol = 4)
+mat[]
 ```
 
 
@@ -736,10 +773,12 @@ It is not necessary, but wise to avoid using function names defined in loaded pa
 The most common R statement used in programming is the assignment statement. For example, assignment statements can be used to create new variables, for example:
 	
 ```{r}
+length <-  c(2,1,3,2,10)
 lglength <- log10(length)
 ```
 	
 If you have not retained the df dataframe from Worked Example 2-2, recreate it.
+
 Download to your working directory, a csv file containing metadata for individuals to be used in later analyses. It is called Tympo_ind_metadata.csv.
 Forgotten the path to your working directory?
 
@@ -762,6 +801,11 @@ df <- read.csv("./www/Tympo_ind_metadata.csv")
 ```
 
 Identify the fields in the dataframe `df`
+
+```{r dataind}
+df <- tympo.gl@other$ind.metrics
+```
+
 
 ```{r}
 names(df)
@@ -1907,13 +1951,13 @@ Hamming distance is a measure of sequence similarity between sequence tags. If t
 
 Run a report first to inform the choice of threshold. Note that this is computationally intensive. Maybe time for a coffee.
 
-```{r eval = TRUE}
+```{r hamming, eval = TRUE}
 gl.report.hamming(gl)
 ```
 
 The report suggests that an appropriate threshold for the Hamming Distance might be 0.3, so lets run with that.
 
-```{r}
+```{r hamfilt}
 gl <- gl.filter.hamming(gl, threshold=0.3)
 ```
 
@@ -2096,14 +2140,12 @@ If you want to identify the migrants, you can use the parameter `interactive=TRU
 gl.pcoa.plot(pca, gl, interactive=TRUE)
 ```
 
-When you run this command you will see how the mouse-over works.
-
 ###
 
 One final point relates to visualization in only two dimensions. The first two PCA axes explain the bulk of the structural signal in the data, but the third dimension may also be informative. This means that proximity as seen in the first two dimensions may prove to be an illusion when the third dimension is considered.
 
 ```{r 61f, exercise = TRUE, exercise.setup = "glfiltpca"}
-gl.pcoa.plot(pca,gl,xaxis=1,yaxis=3)
+pc.plot2 <- gl.pcoa.plot(pca,gl,xaxis=1,yaxis=3)
 ```
 
 ###
@@ -2316,6 +2358,8 @@ gl.smearplot(gs)
 <details>
 
 <summary><b>[Exercise 6-1: Visualizing Structure</b>]{style="color:black; cursor:pointer"}</summary>
+
+- Using the filtered silico tympo data run a pca and compare to the SNP pca. Are they similar? What is different?
 
 - Try running and plotting pcoas on the `platypus.gl` and `testset.gl`. Which dataset has more structure? Can you tell from a PCA?
 
