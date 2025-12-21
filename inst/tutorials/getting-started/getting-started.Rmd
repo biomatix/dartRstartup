@@ -1271,7 +1271,7 @@ Examine the contents of the individual metrics, in this case the first 10 values
 # Only first 10 entries shown
 gl@other$ind.metrics$sex[1:10]
 ```
-###
+
 
 Try this on some other individual metrics.
 
@@ -1282,7 +1282,7 @@ Try this on some other individual metrics.
 ```{r 31e2-hint}
 # you could try any of the metrics
 # found in ind.metrics. What about age:
-gl@other$ind.metrics$age[1:12]
+gl@other$ind.metrics$age[1:12] # first twelve ages
 ```
 
 ###
@@ -1439,7 +1439,7 @@ popNames(gl)
 pop(gl)
 ```
 
-Note the distinction between `popNames(gl)` and `pop(gl)`. The two are related by `popNames(gl) = unique(pop(gl))`.
+Note the distinction between `popNames(gl)` and `pop(gl)`. The two are related by `popNames(gl) == unique(pop(gl))`.
 
 ```{r 41g, exercise = TRUE, exercise.setup = "datagl"}
 ## try some adegenet accessors here
@@ -1472,7 +1472,7 @@ gl.report.callrate(gl, method="loc")
 
 ###
 
-The Call Rate function with method=”ind” summarises Call Rate values for individuals. 
+The Call Rate function with `method='ind'` summarises Call Rate values for individuals. 
 
 ```{r 41j, exercise = TRUE, exercise.setup = "datagl"}
 gl.report.callrate(gl, method="ind")
@@ -1523,7 +1523,7 @@ gl.report.monomorphs(gl)
 **Hamming Distance** is a measure of how similar two sequence tags are. There is a risk that two very similar sequence tags are from the same locus distinguished only by the rare read error. Sequence tags produced by DArT have already been filtered by Hamming Distance (typically threshold 3 bp) but you might choose to be more stringent. This report function will give you an indication of whether you have an issue to resolve or not. Matched with `gl.filter.hamming()` (refer Chapter 5). For further help, type `?gl.report.hamming`.
 
 ```{r eval = FALSE}
-gl.report.hamming(gl) # takes too long or is broken
+gl.report.hamming(gl) 
 ```
 
 ###
@@ -1601,7 +1601,6 @@ gl.new <- gl.drop.pop(gl, pop.list=c('Unknown'),
 
 One can also remove monomorphic loci using `gl.filter.monomorphs()`.
 
-###
 
 How many monomorphic loci were detected, and if any, deleted. 
 See also `gl.keep.pop()` which allows you to specify populations to keep rather than populations to delete.
@@ -1631,7 +1630,7 @@ These functions do not change the underlying `ind.metrics`. In case we want to c
 
 ```{r 42g, exercise = TRUE, exercise.setup = "datagl"}
 gl.new <- gl.rename.pop(gl,old="Kowen",new="Queanbeyan")
-gl.new@other$ind.metrics$pop2 <- glrename@pop
+gl.new@other$ind.metrics$pop2 <- gl.new@pop
 head(gl.new@other$ind.metrics)
 ```
 
@@ -1657,11 +1656,10 @@ gl.new <- gl.drop.pop(gl, pop.list="2006",
 table(gl.new@other$ind.metrics$year) # confirm change
 ```
 
-###
 
-Confirm that the metrics for `year` no longer contains `2006`.
+Confirm that the metrics for `year` no longer contains `2006`. 
 
-Delete `gl.new` as it is no longer needed.
+Then, if you are working in your own console, delete `gl.new` as it is no longer needed.
 
 ```{r}
 rm(gl.new)
@@ -1673,14 +1671,17 @@ rm(gl.new)
 To bulk reassign populations or delete populations, a recode table must first be constructed. 
 
 ```{r, eval=FALSE}
-gl.make.recode.pop(gl, out.recode.file = "my_recode_pop_table.csv",outpath = getwd())
+gl.make.recode.pop(gl, 
+                   out.recode.file = "recode_pop_table.csv",
+                   outpath = getwd())
 ```
 
 Open the file [my_recode_pop_table.csv]{style="color:blue;"} and edit the second column to make some new population labels to replace the old, and to delete some populations. Save the csv file, then apply it to create a new modified dartR genlight object.
 
 
 ```{r eval = FALSE}
-gl.new <- gl.recode.pop(gl, pop.recode = "my_recode_pop_table.csv")
+gl.new <- gl.recode.pop(gl, 
+                        pop.recode = "recode_pop_table.csv")
 ```
 
 
@@ -1708,10 +1709,8 @@ rm(gl.new)
 Deleting individuals is essentially done in the same way as deleting populations.
 
 ```{r 42l, exercise = TRUE, exercise.setup = "datagl"}
-indNames(gl)[1:10] # showing first ten individuals
+indNames(gl)
 ```
-
-###
 
 Three individuals have been misclassified and their provenance is uncertain. We need to remove these. Again, monomorphic loci can arise with the deletion of populations or individuals, so we apply the `mono.rm=TRUE` parameter.
 
@@ -1732,17 +1731,16 @@ To subsample individuals in a genlight object containing SNP or SilicoDArT data,
 
 ```{r 42n, exercise = TRUE, exercise.setup = "datagl"}
 gl2 <- gl.subsample.ind(gl, n=50, by.pop = FALSE, replace=FALSE)
+gl2
 ```
-
-###
 
 To subsample individuals within populations, use the `by.pop` parameter set to `TRUE`.
 
 ```{r 42o, exercise = TRUE, exercise.setup = "datagl"}
-gl2 <- gl.subsample.ind(gl, n=5, by.pop=TRUE, replace=FALSE)
+gl2 <- gl.subsample.ind(gl, n=2, by.pop=TRUE, replace=FALSE)
+gl2
 ```
 
-###
 
 Setting the replacement parameter to `TRUE` will subsample with replacement, so an individual could conceivably be included twice in the new dataset.
 
@@ -1765,9 +1763,9 @@ To subsample loci in a genlight object containing SNP or SilicoDArT data, use
 
 ```{r 42r, exercise = TRUE, exercise.setup = "datagl"}
 gl2 <- gl.subsample.loc(gl, n=1000, replace = FALSE)
+gl2
 ```
 
-###
 
 Note that the default for the `replace` parameter is `FALSE` for `gl.subsample.ind()` and `TRUE` for `gl.subsample.loc()`. Best to be explicit.
 
@@ -1779,6 +1777,8 @@ We have created files that we will not use again, so they should be removed from
 
 
 We are done with the worked example in Chapter 4. Try the rest of the [Exercises](#custom2) for Chapter 4 and then head back to the ebook for Chapter 5 - filtering. 
+
+
 [Back to Menu](#custom){.menuButton}
 
 ## Worked Ex 5-1: Filtering
@@ -1794,7 +1794,7 @@ Below we step through the analysis with you. Please copy the code, paste it or t
 
 ### Load the Dataset
 
-First, load in the dataset using or refer to [Worked Ex 3-1: Data Structures and I/O].
+First, load in the dataset using `gl.load()` or refer to [Worked Ex 3-1: Data Structures and I/O].
 
 ```{r eval = FALSE}
 gl <- gl.load("Tympo_SNP_raw.RData")
@@ -1815,7 +1815,6 @@ nPop(gl)
 table(pop(gl))
 ```
 
-###
 
 If all is well, proceed to filtering. Note that the order in which filtering is undertaken is complex, and depends very much on the context and the analyses to follow. Refer to the section on nuances in Chapter 5 of the eBook. The order given in what follows is arbitrary.
 
@@ -1903,8 +1902,10 @@ Note that the estimate of the zero class involves an iterative process that does
 
 Having examined the report, filtering out the secondaries is done using
 
+
+
 ```{r}
-gl <- gl.filter.secondaries(gl,method="random")
+gl <- gl.filter.secondaries(gl,method="best")
 ```
 
 ### Filtering Loci on Reproducibility
@@ -1927,7 +1928,7 @@ gl <- gl.filter.reproducibility(gl, threshold=0.995)
 ```
 
 
-We lost 733 loci, down from 1660 to 927.
+We lost 740 loci, down from 1660 to 920.
 
 
 ### Filtering Sex-linked Loci
@@ -1945,7 +1946,7 @@ gl.report.sexlinked(gl, system = 'xy')
 
 As you can see we do not have many sex-linked loci, however usually testing for sex-linked markers should come first, as other filters can filter them out.
 
-[text to come (Arthur)]{style="color:red;"}
+[text to come (AG)]{style="color:red;"}
 
 
 ```{r}
@@ -1977,7 +1978,7 @@ gl <- gl.filter.rdepth(gl, lower =6)
 ```
 
 
-That removes another 3 loci. Note that we did not filter using an upper limit (default=1000). One might be tempted because exceptionally high read depths are an indication of stacking of orthologous sequence. However, DArT recommend against this as the data has already been through their pipelines to eliminate loci influenced by the presence of orthologues.
+That removes another 2 loci. Note that we did not filter using an upper limit (default=1000). One might be tempted because exceptionally high read depths are an indication of stacking of orthologous sequence. However, DArT recommend against this as the data has already been through their pipelines to eliminate loci influenced by the presence of orthologues.
 
 ### Filtering Loci on Overshoot
 
@@ -2014,7 +2015,7 @@ gl <- gl.filter.taglength(gl, lower=69)
 
 
 
-Of the 928 loci we started with, we lose 639 bringing us down to 289 loci.
+Of the 912 loci we started with, we lose 637 bringing us down to 275 loci.
 
 
 ### Filtering Loci on Hamming Distance
@@ -2084,7 +2085,8 @@ gl <- gl.drop.sexlinked(gl, 'xy')
 # Loss of 53 loci
 gl <- gl.filter.callrate(gl, threshold=0.95) 
 # Loss of 3322 loci
-gl <- gl.filter.callrate(gl, threshold=0.95, method='ind', mono.rm=TRUE) 
+gl <- gl.filter.callrate(gl, threshold=0.95,
+                         method='ind', mono.rm=TRUE) 
 # Loss of 20 individual, 3 loci
 gl <- gl.filter.reproducibility(gl, threshold=0.995) 
 # Loss of 801 loci
@@ -2178,7 +2180,6 @@ Assuming you have filtered the data appropriately, there should not be a dominan
 gl
 ```
 
-###
 
 Only 0.99% of the 1073 SNP scores are missing (NA). That is well within the tolerances of PCA.
 To run the PCA, use
@@ -2439,6 +2440,8 @@ gl.smearplot(gs)
 
 <br>
 
+[Back to Menu](#custom){.menuButton}
+
 ## Exercise 7-1: Camaroon Macrobrachium 
 ###
 
@@ -2511,6 +2514,8 @@ You should now repeat the above SNP analyses for the accompanying SilicoDArT dat
 -	Save the filtered SNP dataset in binary form using a sensible name (e.g. [Macrobrachium_Cameroon_study_SNP_filtered.RData]{style="color:blue;"}).
 
 -	Save the filtered SilicoDArT dataset in binary form using a sensible name (e.g. [Macrobrachium_Cameroon_study_SilicoDArT_filtered.RData]{style="color:blue;"}).
+
+[Back to Menu](#custom){.menuButton}
 
 ## Exercise 7-2: Western Sawshell Turtle
 ###
@@ -2597,7 +2602,7 @@ You should now repeat the above SNP analyses for the accompanying SilicoDArT dat
 
 -	Save your project and exit.
 
-
+[Back to Menu](#custom){.menuButton}
 
 ## Exercise 7-3: Northern Quoll
 ###
@@ -2659,5 +2664,5 @@ Having examined the dataset and undertaken some QC examinations, the time has co
 
 -	Save your project and exit.
 
-
+[Back to Menu](#custom){.menuButton}
 
