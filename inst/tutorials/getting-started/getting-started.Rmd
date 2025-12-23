@@ -109,8 +109,9 @@ While going through the Worked Examples your progress will be saved, if at any p
 
 Any troubles or tribulations with coding in dartR, we have a great community that can be found on the [dartR google group](https://groups.google.com/g/dartr).
 
-### Let's get started! Pick your Worked Example or Exercise from the Menu.
+### Let's get started! 
 
+Pick your Worked Example or Exercise from the Menu.
 <p>Good luck on your Pop Gen journey! 😁</p>
 
 
@@ -128,16 +129,19 @@ x <- 12
 class(x)
 ```
 
-
 ```{r ex21b, exercise = TRUE}
 x <- "pumkin"
+class(x)
+```
+
+```{r ex21c, exercise = TRUE}
+x <- TRUE
 class(x)
 ```
 
 ### Scalars
 
 A Scalar is an object that contains a single value. It could be a number, or a character string, or a logical variable (`TRUE` or `FALSE`).
-
 
 ```{r ex21c, exercise = TRUE}
 # Character scalar
@@ -155,7 +159,7 @@ class(num)
 
 ```{r  ex21e, exercise = TRUE}
 # Logical scalar
-log <- TRUE
+log <- FALSE
 log
 class(log)
 ```
@@ -167,7 +171,6 @@ A vector is an object containing an ordered set of values all of the same type. 
 #### Creating Vectors
 
 Use the `c()` function (which stands for "combine" or "concatenate") to create vectors of class character, numeric, or logical.
-
 
 ```{r ex21f, exercise = TRUE}
 # Character vector (text)
@@ -186,7 +189,6 @@ temperatures
 test_results <- c(TRUE, FALSE, TRUE, TRUE)
 test_results
 ```
-
 ###
 
 On occasion, you may wish to initialize a vector to be populated during later computation. This can be done with
@@ -197,7 +199,6 @@ vec <- vector("logical", 20) # Creates logical NAs
 vec[] <- NA # Explicitly set all to NA 
 vec 
 ```
-
 ###
 
 Note: In R, even scalar values are vectors
@@ -218,7 +219,6 @@ vec <- c(1, 2, NA, 4, 5)
 sexcode <- c("F", "F", "M", "J", "F", "M", "J", "J", "F")
 mat <- matrix(NA, nrow = 3, ncol = 4) 
 ```
-
 
 ```{r eval = FALSE}
 # Create a vector
@@ -246,6 +246,16 @@ names <- c("Alice", "Bob", "Carol", "Dave")
 # Access elements equal to specific values 
 names[names == "Alice"] 
 
+```
+
+```{r echo=FALSE}
+# Create a vector (runs, but is not shown)
+width <- c(10.4, 5.6, 3.1, 6.4, 21.7)
+```
+
+```{r}
+# Access multiple specific elements
+width[c(1, 3, 4)]
 ```
 
 Try accessing different elements using the example code above.
