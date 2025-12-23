@@ -48,41 +48,33 @@ The Worked Examples listed below are referred to in the eBook [[Getting Started 
 **List of Worked Examples:**
 
 - [Worked Ex 2-1: Data Structures] *optional*
-
 - [Worked Ex 2-2: I/O] *optional*
-
 - [Worked Ex 2-3: Controlling Workflow] *optional*
-
 - [Worked Ex 2-4:Functions] *optional*
-
 - [Worked Ex 3-1: Data Structures and I/O]
-
 - [Worked Ex 4-1: Basic Attributes and QC]
-
 - [Worked Ex 4-2: Manipulating data]
-
 - [Worked Ex 5-1: Filtering]
-
 - [Worked Ex 6-1: Exploratory Visualization]
 
 ### Exercises
 
 The Exercises listed below are referred to in the eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} and associated with particular Chapters. You will be directed to these as you progress through the eBook. 
 
-**List Exercises**
+**List of Exercises**
 
--[Exercise 3-1: Reading in 1-Row Format]
--[Exercise 3-2: Reading in SilicoDArT Data]
--[Exercise 3-3. Reading in vcf data (Arabian Oryx)]
--[Exercise 4-1: Assessing SNP Data]
--[Exercise 4-2: Assessing SilicoDArT Data]
--[Exercise 4-3: Using Recode Tables]
--[Exercise 4-4: Examining Platypus SNP Data]
--[Exercise 4-5: QC on the Platypus Data]
--[Exercise 4-6: Sub-setting the Platypus Data]
--[Exercise 5-1: Filtering the Platypus Dataset]
--[Exercise 5-2: Filtering the Turtle Dataset]
--[Exercise 6-1: Introduced Possums in New Zealand]
+- [Exercise 3-1: Reading in 1-Row Format]
+- [Exercise 3-2: Reading in SilicoDArT Data]
+- [Exercise 3-3. Reading in vcf data (Arabian Oryx)]
+- [Exercise 4-1: Assessing SNP Data]
+- [Exercise 4-2: Assessing SilicoDArT Data]
+- [Exercise 4-3: Using Recode Tables]
+- [Exercise 4-4: Examining Platypus SNP Data]
+- [Exercise 4-5: QC on the Platypus Data]
+- [Exercise 4-6: Sub-setting the Platypus Data]
+- [Exercise 5-1: Filtering the Platypus Dataset]
+- [Exercise 5-2: Filtering the Turtle Dataset]
+- [Exercise 6-1: Introduced Possums in New Zealand]
 
 The Integrative Exercises listed below are referred to in the eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} and are to be undertaken when you have completed all chapters.
 
@@ -98,7 +90,7 @@ Don't forget that all aspects of the material are beneficial for learning -- the
 
 ### R code box
 
-Throughout this tutorial there will be interactive R scripts/consoles (like the one below). This is like a mini version of R running within this tutorial. But since we are already in R, you can also follow along in your own console and start writing your own code in the source panel. You could even try testing some of what you learn on your own data.
+The Worked Examples are interactive in that they present short R scripts in a consoles (like the one below) that needs to be executed. Since you are running the Worked Examples and Excercises from within RStudio, you can also follow along in your own RStudio Console or Editor and evern start start writing your own code as you go along. You could even try testing some of what you learn on your own data.
 
 But first, try running the code below (press the button that says *run code*)
 
@@ -107,19 +99,17 @@ But first, try running the code below (press the button that says *run code*)
 1+1
 ```
 
-It is worth noting that each R code box is independent, so code you ran in one will not be recognised by another. Don't worry though, we have done some fancy coding in the background for you to continue along, keeping track of the tasks performed before hand when necessary. 
+Each R code box is independent so that code you ran in one will not be recognised by another. We have done some fancy coding in the background, keeping track of prior tasks and outputs for you.  
 
-Some of the exercises within this tutorial are specific to your working environment or Rstudio, these types of exercises will have the code provided for you to run in your R session, along with the output.
+A few of the Exercises are specific to your working environment or to Rstudio. These types of Exercises will have code that you need to run in your own RStudio Editor, along with the output you can expect to generate.
 
-While going through the worked examples your progress will be saved, if at any point you would like to refresh the tutorial and start over, the <small>[Start Over]{style="color:#a3a3a3; font-family:'Jaldi', sans-serif;"}</small> button is located at the bottom of the left sidebar, below the tutorial content.
+While going through the Worked Examples your progress will be saved, if at any point you would like to refresh the tutorial and start over, a <small>[Start Over]{style="color:#a3a3a3; font-family:'Jaldi', sans-serif;"}</small> button is available.
 
 ### Google group
 
 Any troubles or tribulations with coding in dartR, we have a great community that can be found on the [dartR google group](https://groups.google.com/g/dartr).
 
-### Let's get started! 
-
-Alright! Time to get started with your first worked example. After that head back to the ebook and be ready to work through the worked examples and exercises back here when prompted.
+### Let's get started! Pick your Worked Example or Exercise from the Menu.
 
 <p>Good luck on your Pop Gen journey! 😁</p>
 
