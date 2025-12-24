@@ -31,7 +31,7 @@ library(dartR.sexlinked)
 gl.set.verbosity(3)
 
 #library(dartRintro) # for tutorial data
-source('./www/reassign_ind_function.R')
+source(file.path(dirname(knitr::current_input()), "www", "reassign_ind_function.R"))
 library(dartRstartup)
 
 ```
@@ -99,7 +99,7 @@ But first, try running the code below (press the button that says *run code*)
 1+1
 ```
 
-Each R code box is independent so that code you ran in one will not be recognised by another. We have done some fancy coding in the background, keeping track of prior tasks and outputs for you.  
+Each RCode box is independent so that code you ran in one will normally not be recognised by another. If you modify code in the RCode boxes, this might cause some issues.
 
 A few of the Exercises are specific to your working environment or to Rstudio. These types of Exercises will have code that you need to run in your own RStudio Editor, along with the output you can expect to generate.
 
@@ -215,40 +215,30 @@ width[4]
 You can specify multiple vector elements.
 
 ```{r ex21vv, exercise = TRUE, exercise.setup="data2"}
-# Create a vector
-#width <- c(10.4,5.6,3.1,6.4,21.7)
 # Access multiple specific elements
 width[c(1,3,4)]
 ```
 or a range of values
 
 ```{r ex21ww, exercise = TRUE, exercise.setup="data2"}
-# Create a vector
-#width <- c(10.4,5.6,3.1,6.4,21.7)
 # Access a range of specific elements
 width[1:4]
 ```
 or all but specified elements
 
 ```{r ex21xx, exercise = TRUE, exercise.setup="data2"}
-# Create a vector
-#width <- c(10.4,5.6,3.1,6.4,21.7)
 # Access all except specified elements (negative indexing)
 width[c(-2,-5)]
 ```
 or the first and last elements
 
-```{r ex21yy, exercise = TRUE,, exercise.setup="data2"}
-# Create a vector
-width <- c(10.4,5.6,3.1,6.4,21.7)
+```{r ex21yy, exercise = TRUE, exercise.setup="data2"}
 # Access first and last elements
 width[c(1,length(width))]
 ```
 or elements with a value greater than 6. Indeed you can use an conditional statement in place of width > 6.
 
-```{r ex21zz, exercise = TRUE}
-# Create a vector
-width <- c(10.4,5.6,3.1,6.4,21.7)
+```{r ex21zz, exercise = TRUE, exercise.setup="data2"}
 # Access elements greater than 6 
 width[width > 6]
 ```
