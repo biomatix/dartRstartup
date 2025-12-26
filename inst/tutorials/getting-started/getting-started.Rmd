@@ -165,7 +165,6 @@ log <- FALSE
 log
 class(log)
 ```
-### 
 
 ### Vectors
 
@@ -700,7 +699,7 @@ You have now finished Worked Example 2-1 so return to the eBook for further inst
 [Back to Menu](#custom){.menuButton}
 
 
-## Worked Ex 2-2: I/O
+## Worked Ex 2-2: I/O {data-progressive="true"}
 
 A core skill in scientific computing is the ability to import experimental data into R and export results for reporting, collaboration, or downstream analysis. R supports a wide range of data formats commonly used in laboratories, field studies, and bioinformatics pipelines. In this worked example, we illustrate standard approaches for both input (reading data) and output (writing data), using small, reproducible examples.
 
