@@ -132,7 +132,7 @@ Any troubles or tribulations with coding in dartR, we have a great community tha
 Pick your Worked Example or Exercise from the Menu.
 <p>Good luck on your dartR journey! 😁</p>
 
-#### Worked Ex 2-1: Data Structures
+## Worked Ex 2-1: Data Structures {progressive-reveal=TRUE}
 
 ### Objects in R
 
@@ -140,8 +140,7 @@ R works with objects, that is, with self-contained entities that have defined at
 
 When you create an object in R, attributes are assigned to it by default. The decision is made behind the scenes.
 
-
-### Scalars {data-continue-text="Continue"}
+### Scalars 
 
 A Scalar is an object that contains a single value. It could be a number, or a character string, or a logical variable (`TRUE` or `FALSE`). Here we assign a scalar object a value, display that value, then enquire as to its Class. Note that the Class is allocated behind the scenes by R based on the type of value being assigned.
 
@@ -166,9 +165,7 @@ log
 class(log)
 ```
 
-###
-
-### Vectors {data-continue-text="Continue"}
+### Vectors
 
 A vector is an object containing an ordered set of values all of the same type. Vectors are the fundamental building blocks of data in R so we visit vectors in some detail here.
 
@@ -269,8 +266,6 @@ names[names %in% c("Alice", "Carol")]
 
 You should by now have the gist. A vector is a data structure that holds an ordered set of numbers, each of which can be addressed by its position in the ordered set, or by applying some logical condition, using square brackets.
 
-###
-
 #### Vector arithmetic
 
 The normal rules of arithmetic apply to vectors in the sense that they apply to each element of the vector (note that it is not at all like vector arithmetic in the mathematical sense).
@@ -317,8 +312,6 @@ vec2 <- vec[!is.na(vec)]
 vec2
 ```
 
-###
-
 #### Useful Vector Functions
 
 
@@ -351,8 +344,6 @@ length(numbers) # e.g.
 ```{r ex21w-hint}
 # copy and paste from above, one at a time or all at once.
 ```
-
-###
 
 For a more detailed account of working with vectors in R, refer to the [AI summary on vectors](http://georges.biomatix.org/storage/app/media/eBook Introduction to dartR/AI_Guide_to_R_Vectors.htm).
 
@@ -412,8 +403,6 @@ mat <- matrix(NA, nrow = 3, ncol = 4)
 mat
 ```
 
-###
-
 #### Adding row and column names to a matrix
 
 ```{r ex21gg,  exercise = TRUE, exercise.setup = "data2"}
@@ -424,8 +413,6 @@ colnames(mat) <- c("Col1", "Col2", "Col3", "Col4")
 mat
 
 ```
-
-###
 
 #### Accessing Matrix Elements
 
@@ -505,11 +492,7 @@ df <- turtles.df
 df
 ```
 
-###
-
 Note the missing value for sex of the juveniles. Character variables are read in as factors, not as character vectors. In this case, the variable sex will be read in as a factor with the factor levels MALE and FEMALE.
-
-###
 
 #### Adding column names to a dataframe
 
@@ -520,7 +503,6 @@ names(df) <- c("identity","sex","len","hw","wt")
 df
 ```
 
-###
 
 ```{r datatab2}
 df <- turtles.df
@@ -546,8 +528,6 @@ df$sex[7]
 
 The object `df$sex` is a vector, and all the usual operators for vectors apply. 
 
-###
-
 #### Initializing a DataFrame
 
 Sometimes you need to initialize a DataFrame populated with missing values to be later accessed and populated with useful values.
@@ -559,8 +539,6 @@ names(df) <- c("temperature", "humidity", "pressure", "wind_speed")
 df 
 ```
 
-
-###
 
 #### Adding Rows and Columns to a Dataframe
 
@@ -627,9 +605,8 @@ exp_results <- list(n=sample_size, genotype=genotype,
 exp_results
 ```
 
-###
-
 #### Accessing List Elements
+
 List elements can be accessed with a double square bracket. For example, to pull down the genotype into a vector, use
 
 ```{r ex21ss,  exercise = TRUE, exercise.setup = "datalist"}
@@ -657,8 +634,6 @@ weights <- c(3.5, 5.2, 7.8, 4.1, 6.7)
 exp_results[["wt"]] <- weights
 exp_results
 ```
-
-###
 
 For a more detailed account of working with lists in R, refer to the [AI summary on lists](http://georges.biomatix.org/storage/app/media/eBook Introduction to dartR/AI_Guide_to_R_Lists.htm).
 
@@ -691,12 +666,9 @@ Many R functions have an option to specify whether or not to exclude missing val
 mean(weights,na.rm=TRUE)
 ```
 
-
-
 ### Winding up
 
 You have now finished Worked Example 2-1 so return to the eBook for further instructions, or return to the MAIN MENU to select the next worked example.
-
 
 [Back to Menu](#custom){.menuButton}
 
