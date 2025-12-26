@@ -11,7 +11,7 @@ output:
     highlight: 'monochrome'
     css: ./css/dartR_style.css
 runtime: shiny_prerendered
-description: "This is the beginning of your journey learning to use dartR, a hands on guide."
+description: "This is the beginning of your journey learning the basics of dartR, a hands on guide."
 ---
 
 ```{r setup, include=FALSE}
@@ -57,13 +57,13 @@ library(dartRstartup)
 
 It is time to start working in the dartRverse! Welcome!
 
-This is your hands on introduction to the basics of working with [dartR](https://github.com/green-striped-gecko/dartRverse?tab=readme-ov-file#dartrverse-). The eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} covers the basic theory in a series of Chapters. The eBook then links to the Worked Examples provided here. These take you by the hand to progress through some examples which allows you to repeat the analyses in the RStudio Editor or to branch out and follow any ideas or other analyses that might strike you as interesting on the way. 
+This is your hands on introduction to the basics of working with [dartR](https://github.com/green-striped-gecko/dartRverse?tab=readme-ov-file#dartrverse-). The eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} covers the basic theory in a series of Chapters. 
 
 ### Worked Examples
 
-The Worked Examples listed below are referred to in the eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"}. You will be directed to these as you progress through the eBook. 
+Having covered the theory in each Chapter, the eBook links to the Worked Examples listed below. These take you by the hand to progress through examples using RCode Boxes. This also provides the flexibility for you to repeat the analyses in the RStudio Editor or to branch out and follow any ideas or other analyses that might strike you as interesting on the way. 
 
-**List of Worked Examples-- Hello:**
+**List of Worked Examples:**
 
 - [Worked Ex 2-1: Data Structures] *optional*
 - [Worked Ex 2-2: I/O] *optional*
@@ -77,7 +77,7 @@ The Worked Examples listed below are referred to in the eBook [[Getting Started 
 
 ### Exercises
 
-The Exercises listed below are referred to in the eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} and associated with particular Chapters. You will be directed to these as you progress through the eBook. 
+The Exercises listed below are referred to in the eBook [[Getting Started with dartR](http://dartr.biomatix.org/dartR)]{style="color:#ff0000;"} and are associated with particular Chapters. You will be directed to these as you progress through the eBook. 
 
 **List of Exercises**
 
@@ -102,7 +102,7 @@ The Integrative Exercises listed below are referred to in the eBook [[Getting St
 - [Exercise 7-2: Western Sawshell Turtle]
 - [Exercise 7-3: Northern Quoll]
 
-Don't forget that all aspects of the material are beneficial for learning -- the eBook for an introduction to the theory and methods, the Worked Examples to gain experience with dartR functions and how they are combined in a workflow and finally the Exercises to apply everything you have learned without coaching.
+Don't forget that all aspects of the material are beneficial for learning -- the eBook for an introduction to the theory and methods, the Worked Examples to gain experience with dartR functions and how they are combined in a workflow, and finally the Exercises to apply everything you have learned without coaching.
 
 <small>If you can't see the left sidebar, you just need to make the tutorial panel wider.</small>
 
@@ -191,17 +191,15 @@ temperatures
 test_results <- c(TRUE, FALSE, TRUE, TRUE)
 test_results
 ```
-###
 
 On occasion, you may wish to initialize a vector to be populated during later computation. This can be done with
 
 ```{r ex21i, exercise = TRUE}
 # Initializing an empty vector
-vec <- vector("logical", 20) # Creates logical NAs 
+vec <- vector("logical", 20)
 vec[] <- NA # Explicitly set all to NA 
 vec 
 ```
-###
 
 Note: In R, even scalar values are vectors, but with length 1. Here we assign a scalar the value 42 and ask if it is a vector with is.vector().
 
@@ -210,8 +208,6 @@ single_value <- 42
 is.vector(single_value)
 length(single_value)
 ```
-
-###
 
 #### Accessing Vector Elements
 
@@ -269,8 +265,6 @@ names <- c("Alice", "Bob", "Carol", "Dave")
 names[names %in% c("Alice", "Carol")] 
 ```
 
-###
-
 You should by now have the gist. A vector is a data structure that holds an ordered set of numbers, each of which can be addressed by its position in the ordered set, or by applying some logical condition, using square brackets.
 
 ###
@@ -284,8 +278,6 @@ width <- width + 10
 width
 ```
 
-###
-
 This will add 10 to each value of the vector. Similar actions occur with the other arithmetic operators. The functions `log()`, `exp()`, `sin()`, `cos()`, `tan()`, `sqrt()`, and so on, all have their usual meaning, and when applied to a vector, are applied to each value of the vector.
 
 It is possible to include two vectors in calculations, in which case their values will be included in the equation as matched pairs. For example, if we have two vectors with the same number of values, length and width, then the assignment
@@ -296,14 +288,10 @@ area <- length*width
 area
 ```
 
-###
-
 This will yield a new vector with the values calculated by multiplying the first value of length with the first value of width, the second value of length with the second value of width, and so on. Calculations involving missing values NA will yield missing values.
 
 The standard arithmetic operators apply, and include and include the usual addition (`+`), subtraction (`-`), division (`/`), multiplication (`*`) and exponentiation (`^`). 
 Working with vectors of differing sizes is difficult, and we probably should not go there.
-
-###
 
 #### Missing Values in Vectors
 
@@ -375,8 +363,6 @@ sexcode <- c("F", "F", "M", "J", "F", "M", "J", "J", "F")
 sexcode
 ```
 
-###
-
 Converting this to a factor causes the values, in alphabetical order, to be assigned numbers, and those numbers to be assigned labels. 
 
 ```{r ex21bb,  exercise = TRUE, exercise.setup = "data2"}
@@ -384,17 +370,14 @@ sexcode <- factor(sexcode)
 sexcode
 ```
 
-###
-
 A subtle difference to be sure. The numbers are hidden behind the scenes, and re-caste with their character values by R when they are printed out. That they are stored as numbers is evident when we print the object sexcode out without reference to its class.
 
 ```{r ex21cc,  exercise = TRUE, exercise.setup = "data2"}
 unclass(factor(sexcode))
 ```
 
-###
-
 The subtle difference between a character vector and a factor will become evident in analyses that involve discrete factors.
+
 To convert a character factor to a character vector, use
 
 ```{r ex21dd,  exercise = TRUE, exercise.setup = "data2"}
@@ -402,7 +385,6 @@ sexcode <- as.character(sexcode)
 sexcode
 ```
 
-###
 
 To convert a numeric factor to a numeric vector, use
 
@@ -411,7 +393,6 @@ width <- as.numeric(as.character(width))
 width
 ```
 
-###
 
 For a more detailed account of working with factors in R, refer to the [AI summary on factors](http://georges.biomatix.org/storage/app/media/eBook Introduction to dartR/AI_Guide_to_R_Factors.htm).
 
