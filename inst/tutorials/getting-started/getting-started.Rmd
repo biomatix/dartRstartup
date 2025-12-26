@@ -133,7 +133,7 @@ Pick your Worked Example or Exercise from the Menu.
 <p>Good luck on your dartR journey! 😁</p>
 
 
-## Worked Ex 2-1: Data Structures {data-progressive="true"}
+## Worked Ex 2-1: Data Structures {data-progressive=TRUE}
 
 ### Objects in R
 
