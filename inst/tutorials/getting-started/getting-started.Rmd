@@ -130,10 +130,10 @@ Any troubles or tribulations with coding in dartR, we have a great community tha
 ### Let's get started! 
 
 Pick your Worked Example or Exercise from the Menu.
-<p>Good luck on your Pop Gen journey! 😁</p>
+<p>Good luck on your dartR journey! 😁</p>
 
 
-## Worked Ex 2-1: Data Structures
+## Worked Ex 2-1: Data Structures {data-progressive="true"}
 
 ### Objects in R
 
