@@ -141,6 +141,7 @@ R works with objects, that is, with self-contained entities that have defined at
 
 When you create an object in R, attributes are assigned to it by default. The decision is made behind the scenes.
 
+
 ### Scalars
 
 A Scalar is an object that contains a single value. It could be a number, or a character string, or a logical variable (`TRUE` or `FALSE`). Here we assign a scalar object a value, display that value, then enquire as to its Class. Note that the Class is allocated behind the scenes by R based on the type of value being assigned.
@@ -165,6 +166,7 @@ log <- FALSE
 log
 class(log)
 ```
+
 
 ### Vectors
 
