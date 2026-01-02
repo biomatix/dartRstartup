@@ -6,7 +6,7 @@ date: |
     
 tutorial:
   id: "dartr.getting-started"   # pick any stable, unique string
-  version: "1.0.20"                 # bump this to force a “fresh” tutorial state
+  version: "1.0.21"                 # bump this to force a “fresh” tutorial state
   
 output:
   learnr::tutorial:
@@ -61,11 +61,13 @@ library(dartRstartup)
 ```
 ## Main menu {#custom data-progressive=FALSE}
 
-The following materials accompany the [Getting Started with dartR](http://dartr.biomatix.org/dartR). 
+The following materials accompany the [eBook: Getting Started with dartR](http://dartr.biomatix.org/dartR). 
 
-The Worked Examples and Exercises that accompany the eBook are written in [Markdown](https://www.markdownguide.org/) and rendered in [learnr](https://rstudio.github.io/learnr/). This maintains currency of the eBook during the continual development of dartR.
+The Worked Examples and Exercises that accompany the eBook are written in [Markdown](https://www.markdownguide.org/) and rendered in [learnr](https://rstudio.github.io/learnr/). This maintains currency of the eBook during the continual development of dartR. 
 
 New Worked Examples and Exercises can be added at any time to better cater for particular audiences, without republishing the eBook.
+
+The main body of the eBook (the printed version), does not change.
 
 ### Worked Examples
 
@@ -561,20 +563,24 @@ Unlike matrices (which require all elements to be the same type), data frames ca
 
 #### Importing Data to a Dataframe
 
-Dataframes are usually created by inputting data from a text file or csv file. In this case, we will work with a simple text file called Caretto.dat. It contains measurements taken from the pig-nosed turtle *Carettochelys insculpta* from Pul Pul Billabong in Stage III of Kakadu National Park.
+Dataframes are usually created by inputting data from a text file or csv file. In this case, we will work with a simple text file called [Caretto.dat]{style = "color: blue;"}. It contains measurements taken from the pig-nosed turtle *Carettochelys insculpta* from Pul Pul Billabong in Stage III of Kakadu National Park.
+
+Download the data first.
 
 ```{r eval =FALSE}
-df <- read.table("./data/Caretto.dat", header=FALSE)
+utils::download.file(url = "http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/Caretto.dat", destfile = "Caretto.dat")
 ```
 
-This statement assigns the data in the raw datafile [Caretto.dat]{style = "color: blue;"} to the dataframe `df`. 
+```{r eval =FALSE}
+df <- read.table("Caretto.dat", header=FALSE)
+```
+
+```{r datatab, echo = FALSE, cache=FALSE}
+df <- read.csv("http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/Caretto.dat")
+```
+This statement assigns the data in the raw datafile [Caretto.dat]{style = "color: blue;"} to the dataframe [df]{style = "color: blue;"}. 
 
 To examine the contents of the dataframe to see if it has been input correctly, simply type the dataframe name.
-
-
-```{r datatab}
-df <- turtles.df
-```
 
 ```{r ex21nn,  exercise = TRUE, exercise.setup = "datatab"}
 df
