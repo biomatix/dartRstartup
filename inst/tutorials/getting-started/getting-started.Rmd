@@ -1399,13 +1399,12 @@ Let's see if that is true, that you are now a pro, by putting what you have lear
 
 ### {data-continue-text="Next Exercise"}
 
--	Navigate to your data folder and open the file [sample_data_1Row.csv]{style="color: blue;"} in Excel. This is a set of SNP data for *Emydura*, a freshwater turtle,  in 1-row format as would be supplied by DArT.
+- Open the file [sample_data_1Row.csv](http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/sample_data_1Row.csv) in Excel. This is a set of SNP data for *Emydura*, a freshwater turtle,  in 1-row format as would be supplied by DArT.
 
--	Refer to the documentation on the [DArT web page](https://www.diversityarrays.com/) to understand the scoring of SNPs in the 1-row format.
+- Refer to the documentation on the [DArT web page](https://www.diversityarrays.com/) to understand the scoring of SNPs in the 1-row format.
 
--	Also refer to the MetaDataDefinition file provided by DArT as part of their report. In this case, a definition file is provided as [sample_metadata.xlsx](http://georges.biomatix.org/storage/app/media/sample_metadata.xlsx).
+- Now examine the individual metadata in the file [sample_metadata.csv](http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/sample_metadata.csv). Note the two mandatory columns [id]{style="color:blue;"} and [pop]{style="color:blue;"}.
 
--	Now examine the individual metadata in the file [sample_metadata.csv]{style="color:blue;"}. Note the two mandatory columns [id]{style="color:blue;"} and [pop]{style="color:blue;"}.
 
 -	Create a new script in the RStudio Editor Window and add the lines
 
@@ -1423,13 +1422,12 @@ Let's see if that is true, that you are now a pro, by putting what you have lear
 
 ## Exercise 3-2: Reading in SilicoDArT Data
 
--	Navigate to your data folder and open the file [sample_data_SilicoDArT.csv]{style="color:blue;"} in Excel. This is a set of marker presence/absence data for *Cherax destructor* provided in SilicoDArT format by DArT.
+- Open the file [sample_data_SilicoDArT.csv](http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/sample_data_SilicoDArT.csv) in Excel. This is a set of marker presence/absence data for *Cherax destructor* provided in SilicoDArT format by DArT.
 
--	Refer to the documentation on the [DArT web page](https://www.diversityarrays.com/) to understand the scoring of the data in the SilicoDArT format.
+- Refer to the documentation on the [DArT web page](https://www.diversityarrays.com/) to understand the scoring of the data in the SilicoDArT format.
 
--	Also refer to the MetaDataDefinition file provided by DArT as part of their report. In this case, a definition file is provided as [sample_metadata.xlsx](http://georges.biomatix.org/storage/app/media/sample_metadata.xlsx).
+- Now examine the individual metadata in the file [sample_metadata.csv](http://georges.biomatix.org/storage/app/media/eBook%20Introduction%20to%20dartR/sample_metadata.csv). Note the two mandatory columns [id]{style="color:blue;"} and [pop]{style="color:blue;"}.
 
--	Now examine the individual metadata in the file [sample_metadata.csv]{style="color:blue;"}. Note the two mandatory columns [id]{style="color:blue;"} and [pop]{style="color:blue;"}.
 
 -	Create a new script in the RStudio Editor Window and add the lines
 
