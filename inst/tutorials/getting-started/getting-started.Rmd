@@ -1628,7 +1628,9 @@ At this point you should have a good grasp on how to interrogate your dataset us
 
 Let's see how good a grasp you have, by putting what you have learned in to practice in a problem solving context with the Chapter 4 Exercises associated with Session 4-1. 
 
-## Exercise 4-1: SNP Data QC {data-continue-text="Continue"}
+## Exercise 4-1: SNP Data QC 
+
+### {data-continue-text="Continue"}
 
 - Load [eBook_Exercise_4-1.Rdata]{style="color:blue;"} to genlight object [gl]{style="color:blue;"}.
 
@@ -1649,7 +1651,9 @@ Let's see how good a grasp you have, by putting what you have learned in to prac
 - Redo these activities with your own data.
 
 
-## Exercise 4-2: SilicoDArT Data QC {data-continue-text="Return to eBook, Chapter 4, <br> Session 2"}
+## Exercise 4-2: SilicoDArT Data QC 
+
+### {data-continue-text="Return to eBook, Chapter 4, <br> Session 2"}
 
 - Try this for yourself using a sample SilicoDart dataset. 
 
