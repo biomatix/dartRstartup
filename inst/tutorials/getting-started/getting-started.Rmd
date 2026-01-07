@@ -1630,45 +1630,47 @@ Let's see how good a grasp you have, by putting what you have learned in to prac
 
 ## Exercise 4-1: SNP Data QC {data-continue-text="Continue"}
 
--	Load [Exercise_4-1.Rdata]{style="color:blue;"} to genlight object [gl]{style="color:blue;"}.
+- Load [eBook_Exercise_4-1.Rdata]{style="color:blue;"} to genlight object [gl]{style="color:blue;"}.
 
--	How many loci are represented in this dataset?
+- How many loci are represented in this dataset?
 
--	How many individuals have been scored?
+- How many individuals have been scored?
 
--	Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
+- Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
 
--	Examine the genotypes for the first 5 individuals for the first 10 loci.
+- Examine the genotypes for the first 5 individuals for the first 10 loci.
 
--	How are missing values represented?
+- How are missing values represented? What proportion of scores are missing?
 
--	Examine the structure of the dataset in a smear plot. What can you say about allelic dropout? Are there any aberrant patterns across loci? Across individuals?
+- Examine the structure of the dataset in a smear plot. What can you say about allelic dropout? Are there any aberrant patterns across loci? Across individuals?
 
--	Run a series of reports to assess the quality of the SNP calls. Generate reports for reproducibility, rdepth, secondaries, overshoot, taglength, monomorphs and other locus metadata in [gl]{style="color:blue;"}.
+- Run a series of reports to assess the quality of the SNP calls. Generate reports for reproducibility, rdepth, secondaries, overshoot, taglength, monomorphs and other locus metadata in [gl]{style="color:blue;"}.
 
--	Redo these activities with your own data.
+- Redo these activities with your own data.
+
 
 ## Exercise 4-2: SilicoDArT Data QC {data-continue-text="Return to eBook, Chapter 4, <br> Session 2"}
 
--	Try this for yourself using a sample SilicoDart dataset. 
+- Try this for yourself using a sample SilicoDart dataset. 
 
--	First load the genlight object [Exercise_4-2.Rdata]{style="color:blue;"} to a working genlight object [gs]{style="color:blue;"}.
+- First load the genlight object [eBook_Exercise_4-2.Rdata]{style="color:blue;"} to a working genlight object [gs]{style="color:blue;"}.
 
--	How many loci are represented in this dataset?
+- How many loci are represented in this dataset?
 
--	How many individuals have been scored?
+- How many individuals have been scored?
 
--	Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
+- Are the individuals assigned to populations and if so, how many populations? What are the names of the populations?
 
--	Examine the genotypes for the first 5 individuals for the first 10 loci.
+- Examine the genotypes for the first 5 individuals for the first 10 loci.
 
--	How are missing values represented?
+- How are missing values represented? What proportion of scores are missing?
 
--	Examine the extent of failed calls within the dataset, first with a smearplot, then with the appropriate report functions.
+- Examine the extent of failed calls within the dataset, first with a smearplot, then with the appropriate report functions.
 
--	If you have a SilicoDArT dataset of your own, try what you have learned on that dataset.
+- If you have a SilicoDArT dataset of your own, try what you have learned on that dataset.
 
--	All of the report functions for SNP data operate in a similar manner with SilicoDArT data, though not an identical manner.
+- All of the report functions for SNP data operate in a similar manner with SilicoDArT data, though not an identical manner.
+
 
 ## Chapter 4, Session 2
 
